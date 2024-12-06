@@ -2,7 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const DashboardScreen = ({ navigation }) => {
+const MoneyScreen = ({ navigation }) => {
+  const balance = 1500.75; // Ejemplo de saldo, puedes obtenerlo desde el estado o una API
+
   return (
     <View style={styles.container}>
       {/* Medias lunas amarillas */}
@@ -12,7 +14,7 @@ const DashboardScreen = ({ navigation }) => {
       {/* Flecha de regreso personalizada */}
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => navigation.navigate('Login')}
+        onPress={() => navigation.goBack()} // Regresa a la pantalla anterior
       >
         <Ionicons name="arrow-back" size={24} color="black" />
       </TouchableOpacity>
@@ -23,42 +25,14 @@ const DashboardScreen = ({ navigation }) => {
         style={styles.burgerTopLeft}
       />
 
-      {/* Título del Dashboard */}
-      <Text style={styles.title}>Bienvenido a tu Banca</Text>
+      {/* Título de la pantalla */}
+      <Text style={styles.title}>Saldo Disponible</Text>
 
-      {/* Opciones del Dashboard */}
-      <View style={styles.optionsContainer}>
-
-        {/* Dinero */}
-        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('Money')}>
-
-          <Image
-            source={require('../assets/burger.png')} // Imagen de referencia
-            style={styles.optionImage}
-          />
-          <Text style={styles.optionText}>Dinero</Text>
-        </TouchableOpacity>
-
-        {/* Transferir Dinero */}
-        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('Transfer')}>
-          <Image
-            source={require('../assets/CARLS STAR.png')} // Imagen de referencia
-            style={styles.optionImage}
-          />
-          <Text style={styles.optionText}>Transferir Dinero</Text>
-        </TouchableOpacity>
-
-        {/* Recibir Dinero */}
-        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('ReceiveMoney')}>
-          <Image
-            source={require('../assets/CARLS STAR.png')} // Imagen de referencia
-            style={styles.optionImage}
-          />
-          <Text style={styles.optionText}>Recibir Dinero</Text>
-        </TouchableOpacity>
-
+      {/* Monto del saldo */}
+      <Text style={styles.balanceAmount}>
+        ${balance.toFixed(2)} {/* Formateo de saldo con 2 decimales */}
+      </Text>
       </View>
-    </View>
   );
 };
 
@@ -91,7 +65,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     marginVertical: 20,
-    top: -30,
+  },
+  balanceAmount: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#2E8B57', // Verde para indicar dinero
+    marginVertical: 20,
   },
   backButton: {
     position: 'absolute',
@@ -140,4 +119,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DashboardScreen;
+export default MoneyScreen;
