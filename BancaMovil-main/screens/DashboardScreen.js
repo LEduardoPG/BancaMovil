@@ -31,7 +31,6 @@ const DashboardScreen = ({ navigation }) => {
 
         {/* Dinero */}
         <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('Money')}>
-
           <Image
             source={require('../assets/burger.png')} // Imagen de referencia
             style={styles.optionImage}
@@ -55,6 +54,19 @@ const DashboardScreen = ({ navigation }) => {
             style={styles.optionImage}
           />
           <Text style={styles.optionText}>Recibir Dinero</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('Notifications')}>
+          <Image
+            source={require('../assets/CARLS STAR.png')} // Imagen de referencia
+            style={styles.optionImage}
+          />
+          <Text style={styles.optionText}>Notifications</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.option} onPress={() => navigation.navigate('Transactions')}>
+          <Ionicons name="grid" size={40} color="black" />
+          <Text style={styles.optionText}>Transactions</Text>
         </TouchableOpacity>
 
       </View>

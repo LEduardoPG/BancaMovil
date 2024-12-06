@@ -9,6 +9,8 @@ import DashboardScreen from './screens/DashboardScreen'; // Nueva pantalla
 import MoneyScreen from './screens/MoneyScreen'; // Importa la pantalla de dinero
 import TransferScreen from './screens/TransferScreen';
 import ReceiveMoneyScreen from './screens/ReceiveMoneyScreen';
+import TransactionHistoryScreen from './screens/TransactionHistoryScreen';
+import NotificationsScreen from './screens/NotificationsScreen';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -49,6 +51,16 @@ export default function App() {
           name="ReceiveMoney"
           component={ReceiveMoneyScreen}
           options={{ headerShown: false }}
+        />
+         <Stack.Screen
+            name="Transactions"
+            component={TransactionHistoryScreen}
+            options={{ headerShown: false }}
+        />
+          <Stack.Screen
+            name="Notifications"
+            component={NotificationsScreen}
+            options={{ headerShown: false }}
         />
 
       </Stack.Navigator>
